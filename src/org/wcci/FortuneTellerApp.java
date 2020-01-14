@@ -3,13 +3,11 @@ package org.wcci;
 import java.util.Scanner;
 
 public class FortuneTellerApp {
+    static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
-        //Ask for first name
-        System.out.println("What is your first name?");
-        Scanner input = new Scanner(System.in);
-        String firstName = input.nextLine();
 
+        String firstName = askForFirstName();
         //Ask for Last Name
         System.out.println("What is your last name?");
         String lastName = input.nextLine();
@@ -24,14 +22,9 @@ public class FortuneTellerApp {
 
         input.nextLine();
         //Ask for favorite color
-        System.out.println("What is your favorite color? (Give me a ROYGBIV color or ask for help)");
-        String favoriteColor = input.nextLine();
 
-        if (favoriteColor.equalsIgnoreCase("HELP")) {
-            System.out.println("Use RED, ORANGE, YELLOW, GREEN, BLUE, INDIGO, or VIOLET");
-            System.out.println("What is your favorite color? (Give me a ROYGBIV color)");
-            favoriteColor = input.nextLine();
-        }
+       String favoriteColor =askForFavoriteColor();
+
 
         //Number of siblings
         System.out.println("How many siblings do you have? (Give me an integer value)?");
@@ -105,6 +98,23 @@ public class FortuneTellerApp {
         System.out.println(firstName + " " + lastName + " will retire in " + numberOfYearsUntilRetirement + " years,\n" +
                 "with " + bankBalance + " in the bank, \n" +
                 "a vacation home in " + vacationHomeLocation + ", \n" +
-                "and travel by "+modeOfTransportation +".");
+                "and travel by " + modeOfTransportation + ".");
+    }
+
+    private static String askForFirstName() {
+        System.out.println("What is your first name?");
+        return input.nextLine();
+    }
+
+    private static String askForFavoriteColor() {
+        System.out.println("What is your favorite color? (Give me a ROYGBIV color or ask for help)");
+        String favoriteColor = input.nextLine();
+
+        if (favoriteColor.equalsIgnoreCase("HELP")) {
+            System.out.println("Use RED, ORANGE, YELLOW, GREEN, BLUE, INDIGO, or VIOLET");
+            System.out.println("What is your favorite color? (Give me a ROYGBIV color)");
+            favoriteColor = input.nextLine();
+        }
+        return favoriteColor;
     }
 }
